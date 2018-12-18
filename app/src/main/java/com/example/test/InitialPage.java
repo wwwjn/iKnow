@@ -28,7 +28,7 @@ public class InitialPage extends AppCompatActivity {
 
 
     }
-    
+
     //点击"我的日历"按钮，进入“我的日历”页面
     public void gotoPrivatePage()
     {
