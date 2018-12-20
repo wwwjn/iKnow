@@ -143,12 +143,14 @@ public class PublicPage extends AppCompatActivity  {
     public void gotoSettingPage(View view) {
         Intent intent = new Intent(this, SettingPage.class);
         startActivity(intent);
+        PublicPage.this.finish();
     }
 
     //点击“我的日历”按钮，跳转到“我的日历”页面
     public void gotoPrivatePage(View view) {
         Intent intent = new Intent(this, PrivatePage.class);
         startActivity(intent);
+        PublicPage.this.finish();
     }
 
 }

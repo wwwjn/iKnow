@@ -22,6 +22,7 @@ public class SettingPage extends AppCompatActivity {
         publicBtn= (Button)findViewById(R.id.PublicButton);
         privateBtn= (Button)findViewById(R.id.PrivateButton);
 
+
         //佳妮的发布消息页面
         /*
         publishBtn.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +51,7 @@ public class SettingPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent2=new Intent(SettingPage.this,PublicPage.class);
                 startActivity(intent2);
+                SettingPage.this.finish();
             };
         });
 
@@ -59,9 +61,13 @@ public class SettingPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent2=new Intent(SettingPage.this,PrivatePage.class);
                 startActivity(intent2);
+                SettingPage.this.finish();
             };
         });
 
-}
+    }
+
+
+
 
 }

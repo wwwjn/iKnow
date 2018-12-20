@@ -19,6 +19,7 @@ public class PrivatePage extends AppCompatActivity {
     {
         Intent intent = new Intent(PrivatePage.this, PublicPage.class);
         startActivity(intent);
+        PrivatePage.this.finish();
     }
 
     //点击"软件设置"按钮，进入“软件设置”页面
@@ -26,5 +27,6 @@ public class PrivatePage extends AppCompatActivity {
     {
         Intent intent = new Intent(PrivatePage.this, SettingPage.class);
         startActivity(intent);
+        PrivatePage.this.finish();
     }
 }

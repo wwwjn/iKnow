@@ -34,6 +34,7 @@ public class InitialPage extends AppCompatActivity {
     {
         Intent intent = new Intent(InitialPage.this, PrivatePage.class);
         startActivity(intent);
+        InitialPage.this.finish();
     }
 
 
