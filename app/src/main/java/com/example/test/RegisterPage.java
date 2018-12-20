@@ -171,7 +171,7 @@ public class RegisterPage extends AppCompatActivity {
                         UsernameText.setVisibility(View.VISIBLE);
                     }
                     else{
-                        Intent intent = new Intent(RegisterPage.this, PrivatePage.class);
+                        Intent intent = new Intent(RegisterPage.this, LoginPage.class);
                         startActivity(intent);
                     }
                 }
