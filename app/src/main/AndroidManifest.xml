@@ -25,7 +25,8 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".SettingPage" />
         <activity android:name=".PrivatePage" />
-        <activity android:name=".DetailPage"></activity>
+        <activity android:name=".DetailPage" />
+        <activity android:name=".LoginPage"></activity>
     </application>
 
 </manifest>

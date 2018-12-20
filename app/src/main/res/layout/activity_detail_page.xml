@@ -23,7 +23,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/back_button"
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -174,14 +174,14 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/tag1"
                     android:layout_width="30dp"
                     android:layout_height="35dp"
                     android:layout_weight="1"
                     android:text="科创" />
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/tag2"
                     android:layout_width="30dp"
                     android:layout_height="35dp"
                     android:layout_weight="1"
@@ -207,27 +207,21 @@
                 android:layout_height="50dp" />
 
             <TextView
-                android:id="@+id/textView12"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:text="图片："
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="match_parent"
-                android:layout_height="100dp" />
-
-            <TextView
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="推送链接：" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/tv7"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" />
+
+            <Button
+                android:id="@+id/last_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
 
         </LinearLayout>
     </ScrollView>
