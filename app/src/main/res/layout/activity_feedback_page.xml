@@ -65,7 +65,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/ButtonFunction"
+                android:id="@+id/ButtonTag1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="功能建议"
@@ -76,7 +76,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/ButtonUse"
+                android:id="@+id/ButtonTag2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -88,7 +88,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/ButtonContent"
+                android:id="@+id/ButtonTag3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -119,14 +119,16 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/FeedBack"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
+            android:gravity="top"
             android:ems="10"
+            android:maxLength="200"
             android:hint="请写下你遇到的问题，200字以内"
-            android:inputType="text" />
+            android:inputType="textMultiLine" />
 
         <TextView
             android:layout_width="match_parent"
@@ -141,7 +143,7 @@
 
 
         <Button
-            android:id="@+id/button13"
+            android:id="@+id/ButtonSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
