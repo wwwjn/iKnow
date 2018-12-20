@@ -102,9 +102,13 @@ public class PrivatePage extends AppCompatActivity {
                     os.close();
 
                     Log.i("Connection", String.valueOf(connection.getResponseCode()));
-                    if (connection.getResponseCode() == 200)
-                        MyActivity = StreamToString(connection.getInputStream());
-
+                    if (connection.getResponseCode() == 200){
+                        //Log.i("Connection", StreamToString(connection.getInputStream()));
+                        JSONObject json = new JSONObject(StreamToString(connection.getInputStream()));
+                        for(int i = 1; i < 6; i++){
+                            Log.i("Connection", json.getString("Activity" + String.valueOf(i)));
+                        }
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -138,7 +142,7 @@ public class PrivatePage extends AppCompatActivity {
             String data = baos.toString();
             baos.close();
             fis.close();
-            return new String(data);
+            return data;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -184,7 +188,8 @@ public class PrivatePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_private_page);
         Init();
-        InitData();
+        //InitData();
+        SendToServer();
         /*String data = GetData("MyActivity.txt");
         Log.i("Connection",data);
         try{
