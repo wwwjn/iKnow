@@ -2,17 +2,17 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="300dp"
+    android:layout_height="600dp"
+    android:layout_gravity="center"
     tools:context=".FeedbackPage">
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="300dp"
-        android:layout_height="600dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,21 +21,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/ButtonBack"
-                android:layout_width="71dp"
-                android:layout_height="35dp"
+                android:layout_width="75dp"
+                android:layout_height="40dp"
                 android:background="@drawable/back" />
 
             <TextView
-                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="100px"
+                android:layout_marginLeft="50px"
                 android:text="问题反馈"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
@@ -43,21 +41,15 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/line1"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="5px"
-            android:layout_marginLeft="5px"
-            android:background="@android:color/darker_gray"
-            android:orientation="horizontal">
-
-        </LinearLayout>
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray" />
 
         <TextView
-            android:id="@+id/textView12"
-            android:layout_width="288dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="3dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="反馈类型"
@@ -66,64 +58,60 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
             android:background="@android:color/transparent"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/buttonf"
+                android:id="@+id/ButtonFunction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:text="功能建议"
                 android:textAlignment="center"
                 android:background="#b9b6b6"
                 android:textColor="#484444"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/buttonu"
+                android:id="@+id/ButtonUse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="8dp"
                 android:text="使用问题"
                 android:textAlignment="center"
                 android:background="#b9b6b6"
                 android:textColor="#494747"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/buttonc"
+                android:id="@+id/ButtonContent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="8dp"
                 android:text="内容相关"
                 android:textAlignment="center"
                 android:background="#b9b6b6"
                 android:textColor="#484444"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/line2"
+        <View
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="5px"
-            android:layout_marginLeft="5px"
-            android:layout_marginTop="20dp"
-            android:background="@android:color/darker_gray"
-            android:orientation="horizontal">
-
-        </LinearLayout>
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray" />
 
         <TextView
-            android:id="@+id/textView13"
-            android:layout_width="288dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:text="反馈内容"
@@ -132,29 +120,32 @@
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="298dp"
-            android:layout_height="226dp"
-            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
             android:ems="10"
             android:hint="请写下你遇到的问题，200字以内"
             android:inputType="text" />
 
         <TextView
-            android:id="@+id/textView14"
-            android:layout_width="298dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
-            android:text="紧急情况请通过其他方式联系联系方式见开发者信息"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="10dp"
+            android:text="紧急情况请通过其他方式联系\n联系方式见开发者信息"
             android:textColor="@android:color/darker_gray"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textAlignment="center" />
 
 
         <Button
             android:id="@+id/button13"
-            android:layout_width="301dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/button_register"
             android:text="提交"

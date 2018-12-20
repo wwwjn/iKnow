@@ -26,9 +26,9 @@ public class FeedbackPage extends AppCompatActivity {
             }
         });
 
-        buttonf = findViewById(R.id.buttonf);
-        buttonu = findViewById(R.id.buttonu);
-        buttonc = findViewById(R.id.buttonc);
+        buttonf = findViewById(R.id.ButtonFunction);
+        buttonu = findViewById(R.id.ButtonUse);
+        buttonc = findViewById(R.id.ButtonContent);
         buttonf.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 if(flagf == false){

@@ -37,8 +37,8 @@ public class RegisterPage extends AppCompatActivity {
     private EditText Username, Nickname, Password, Password2;
     private TextView DepartmentText, UsernameText, NicknameText, PasswordText, Password2Text;
     private User Me = new User();
-    private boolean RegisterSucceedFlag = true;
-    private String[] UsernameNow = new String[]{"李碧璐","程超群","杨小燕","王佳妮","沈运浩","马梓源","赖赣平"};
+    private boolean RegisterSucceedFlag = false;
+    private boolean ThreadFinishFlag = false;
 
     private List<String> DepartmentChoice(){
         List<String> data = new ArrayList<>();
@@ -96,15 +96,15 @@ public class RegisterPage extends AppCompatActivity {
                 else{
                     Me.SetInformation(username, password, nickname, department);
                     Register();
+                    while(!ThreadFinishFlag);
                     if(RegisterSucceedFlag == false){
                         UsernameText.setText("对不起，此用户名已存在!");
                         UsernameText.setVisibility(View.VISIBLE);
                     }
                     else{
-                        //Intent intent = new Intent();
-                        //这里把MyActivity.class改成想要跳转的页面即可实现跳转
-                        //intent.setClass(RegisterActivity.this, MyActivity.class);
-                        //startActivity(intent);
+                        Intent intent = new Intent();
+                        intent.setClass(RegisterPage.this, PrivatePage.class);
+                        startActivity(intent);
                     }
                 }
             }
@@ -116,6 +116,8 @@ public class RegisterPage extends AppCompatActivity {
             @Override
             public void run() {
                 try {
+                    ThreadFinishFlag = false;
+
                     JSONObject Json = new JSONObject();  //把数据存成Json格式
                     Json.put("Username", Me.Username);
                     Json.put("Password", Me.Password);
@@ -124,7 +126,7 @@ public class RegisterPage extends AppCompatActivity {
                     String content = String.valueOf(Json);  //Json格式转成字符串来传输
 
 
-                    URL url = new URL("https://iknow.gycis.me/updateData/addNewUser");  //不同的请求发送到不同的URL地址，见群里的“后端网页名字设计.docx”
+                    URL url = new URL("https://iknow.gycis.me:8443/updateData/addNewUser");  //不同的请求发送到不同的URL地址，见群里的“后端网页名字设计.docx”
                     HttpURLConnection connection =  (HttpURLConnection)url.openConnection();
                     connection.setRequestMethod("POST");
                     connection.setConnectTimeout(5000);
@@ -152,6 +154,7 @@ public class RegisterPage extends AppCompatActivity {
                     else{
                         Log.i("Connection", "Fail");
                     }
+                    ThreadFinishFlag = true;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
