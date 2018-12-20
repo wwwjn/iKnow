@@ -121,7 +121,7 @@
         <EditText
             android:id="@+id/FeedBack"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="200dp"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:gravity="top"
@@ -155,6 +155,19 @@
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/SubmitSucceed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="10dp"
+            android:text="提交成功！"
+            android:visibility="invisible"
+            android:textColor="#bf2727"
+            android:textSize="22sp"
+            android:textAlignment="center" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

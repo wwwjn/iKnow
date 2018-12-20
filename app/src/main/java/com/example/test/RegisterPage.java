@@ -48,8 +48,73 @@ public class RegisterPage extends AppCompatActivity {
         return data;
     }
 
-    public void Init(){
-        //根据id确定每个控件
+    public class Register extends Thread{
+        public void run() {
+            try {
+                JSONObject Json = new JSONObject();  //把数据存成Json格式
+                Json.put("Username", Me.Username);
+                Json.put("Password", Me.Password);
+                Json.put("Department", Me.Department);
+                Json.put("Nickname", Me.Nickname);
+                String content = String.valueOf(Json);  //Json格式转成字符串来传输
+
+                URL url = new URL("https://iknow.gycis.me:8443/updateData/addNewUser");  //不同的请求发送到不同的URL地址，见群里的“后端网页名字设计.docx”
+                HttpURLConnection connection =  (HttpURLConnection)url.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setConnectTimeout(5000);
+                connection.setReadTimeout(5000);
+                connection.setDoInput(true);
+                connection.setDoOutput(true);
+
+                Log.i("Connection", content);
+                OutputStream os = connection.getOutputStream();  //打开输出流传输数据
+                os.write(content.getBytes());
+                os.flush();
+                os.close();
+
+                Log.i("Connection", String.valueOf(connection.getResponseCode()));  //如果ResponseCode=200说明和服务器连接正确
+                if (connection.getResponseCode() == 200) {
+                    //以字符串格式读取服务器的返回内容，Register功能只需返回普通字符串，如果请求的是活动信息则将会返回Json格式的字符串，
+                    //可以用形如JSONObject Json = new JSONObject(String)的语句把字符串转成Json格式
+                    String result = StreamToString(connection.getInputStream());
+                    Log.i("Connection", result);
+                    if(result.equals("username existed"))
+                        RegisterSucceedFlag = false;
+                    else if(result.equals("register succeed"))
+                        RegisterSucceedFlag = true;
+                }
+                else{
+                    Log.i("Connection", "Fail");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public String StreamToString(InputStream is) {
+        //把输入流转换成字符串
+        try {
+            ByteArrayOutputStream Baos = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int len;
+            while ((len = is.read(buffer)) != -1)
+                Baos.write(buffer, 0, len);
+            String result = Baos.toString();
+            is.close();
+            Baos.close();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register_page);
+
         DepartmentSpinner = findViewById(R.id.Department);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, DepartmentChoice());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -113,75 +178,5 @@ public class RegisterPage extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public class Register extends Thread{
-        public void run() {
-            try {
-                JSONObject Json = new JSONObject();  //把数据存成Json格式
-                Json.put("Username", Me.Username);
-                Json.put("Password", Me.Password);
-                Json.put("Department", Me.Department);
-                Json.put("Nickname", Me.Nickname);
-                String content = String.valueOf(Json);  //Json格式转成字符串来传输
-
-
-                URL url = new URL("https://iknow.gycis.me:8443/updateData/addNewUser");  //不同的请求发送到不同的URL地址，见群里的“后端网页名字设计.docx”
-                HttpURLConnection connection =  (HttpURLConnection)url.openConnection();
-                connection.setRequestMethod("POST");
-                connection.setConnectTimeout(5000);
-                connection.setReadTimeout(5000);
-                connection.setDoInput(true);
-                connection.setDoOutput(true);
-
-                Log.i("Connection", content);
-                OutputStream os = connection.getOutputStream();  //打开输出流传输数据
-                os.write(content.getBytes());
-                os.flush();
-                os.close();
-
-                Log.i("Connection", String.valueOf(connection.getResponseCode()));  //如果ResponseCode=200说明和服务器连接正确
-                if (connection.getResponseCode() == 200) {
-                    //以字符串格式读取服务器的返回内容，Register功能只需返回普通字符串，如果请求的是活动信息则将会返回Json格式的字符串，
-                    //可以用形如JSONObject Json = new JSONObject(String)的语句把字符串转成Json格式
-                    String result = StreamToString(connection.getInputStream());
-                    Log.i("Connection", result);
-                    if(result.equals("username existed"))
-                        RegisterSucceedFlag = false;
-                    else if(result.equals("register succeed"))
-                        RegisterSucceedFlag = true;
-                }
-                else{
-                    Log.i("Connection", "Fail");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public String StreamToString(InputStream is) {
-        //把输入流转换成字符串
-        try {
-            ByteArrayOutputStream Baos = new ByteArrayOutputStream();
-            byte[] buffer = new byte[1024];
-            int len;
-            while ((len = is.read(buffer)) != -1)
-                Baos.write(buffer, 0, len);
-            String result = Baos.toString();
-            is.close();
-            Baos.close();
-            return result;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_page);
-        Init();
     }
 }

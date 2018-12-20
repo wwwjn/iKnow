@@ -24,7 +24,7 @@ public class FeedbackPage extends AppCompatActivity {
     private EditText FeedBack;
     private Button Submit;
     private String[] TagContent = {"功能建议", "使用问题", "内容相关"};
-    private boolean ThreadFinishFlag = false;
+    private TextView SubmitSucceed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class FeedbackPage extends AppCompatActivity {
         Back.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent = new Intent();
-                intent.setClass(FeedbackPage.this, PrivatePage.class);
+                intent.setClass(FeedbackPage.this, PrivatePage.class);  //之后更改--------
                 startActivity(intent);
             }
         });
@@ -62,48 +62,51 @@ public class FeedbackPage extends AppCompatActivity {
         Submit = findViewById(R.id.ButtonSubmit);
         Submit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Submit();
-            }
-        });
-    }
-
-    public void Submit(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    ThreadFinishFlag = false;
-
-                    String feedback = FeedBack.getText().toString();
-
-                    URL url = new URL("反馈地址");
-                    HttpURLConnection connection =  (HttpURLConnection)url.openConnection();
-                    connection.setRequestMethod("POST");
-                    connection.setConnectTimeout(5000);
-                    connection.setReadTimeout(5000);
-                    connection.setDoInput(true);
-                    connection.setDoOutput(true);
-
-                    Log.i("Connection", feedback);
-                    OutputStream os = connection.getOutputStream();
-                    os.write(feedback.getBytes());
-                    os.flush();
-                    os.close();
-
-                    Log.i("Connection", String.valueOf(connection.getResponseCode()));
-                    if (connection.getResponseCode() == 200) {
-                        String result = StreamToString(connection.getInputStream());
-                        Log.i("Connection", result);
-                    }
-                    else{
-                        Log.i("Connection", "Fail");
-                    }
-                    ThreadFinishFlag = true;
-                } catch (Exception e) {
+                Submit submit = new Submit();
+                submit.start();
+                try{
+                    submit.join();
+                }catch(Exception e){
                     e.printStackTrace();
                 }
+                SubmitSucceed.setVisibility(View.VISIBLE);
             }
-        }).start();
+        });
+
+        SubmitSucceed = findViewById(R.id.SubmitSucceed);
+    }
+
+    private class Submit extends Thread{
+        public void run() {
+            try {
+                String feedback = FeedBack.getText().toString();
+
+                URL url = new URL("反馈地址");  //后面修改------------
+                HttpURLConnection connection =  (HttpURLConnection)url.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setConnectTimeout(5000);
+                connection.setReadTimeout(5000);
+                connection.setDoInput(true);
+                connection.setDoOutput(true);
+
+                Log.i("Connection", feedback);
+                OutputStream os = connection.getOutputStream();
+                os.write(feedback.getBytes());
+                os.flush();
+                os.close();
+
+                Log.i("Connection", String.valueOf(connection.getResponseCode()));
+                if (connection.getResponseCode() == 200) {
+                    String result = StreamToString(connection.getInputStream());
+                    Log.i("Connection", result);
+                }
+                else{
+                    Log.i("Connection", "Fail");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public String StreamToString(InputStream is) {
