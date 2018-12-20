@@ -76,9 +76,8 @@ public class DetailPage extends AppCompatActivity {
                         //以字符串格式读取服务器的返回内容，Register功能只需返回普通字符串，如果请求的是活动信息则将会返回Json格式的字符串，
                         //可以用形如JSONObject Json = new JSONObject(String)的语句把字符串转成Json格式
                         String result = StreamToString(connection.getInputStream());
+                        JSONObject thisJson = new JSONObject(result);
                         Log.i("Connection", result);
-                        if(result.equals("Activity find"))
-                            getActivityflag = true;
                     }
                     else{
                         Log.i("Connection", "Fail");
@@ -118,5 +117,6 @@ public class DetailPage extends AppCompatActivity {
         mTextview[6].setText("工物系");
         tag1.setText("科创");
         tag2.setText("社工");
+        mTextview[7].setText("URL");
     }
 }
