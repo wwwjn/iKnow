@@ -2,8 +2,14 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+<<<<<<< HEAD
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+=======
+    android:layout_width="300dp"
+    android:layout_height="600dp"
+    android:layout_gravity="center"
+>>>>>>> github/ccq
     tools:context="com.example.test.InitialPage">
 
     <RelativeLayout
@@ -17,6 +23,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+<<<<<<< HEAD
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,8 +40,31 @@
             android:text="欢迎使用"
             android:textColor="@color/colorLightRed"
             android:textSize="30sp"
+=======
+            android:id="@+id/InitLogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/TextWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/InitLogo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="欢迎使用"
+            android:textColor="#ea7e7e"
+            android:textSize="40sp"
+>>>>>>> github/ccq
             android:textStyle="bold" />
 
 
     </RelativeLayout>
+<<<<<<< HEAD
 </android.support.constraint.ConstraintLayout>
+=======
+</android.support.constraint.ConstraintLayout>
+>>>>>>> github/ccq

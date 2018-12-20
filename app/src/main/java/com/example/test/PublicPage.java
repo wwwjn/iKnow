@@ -19,10 +19,10 @@ public class PublicPage extends AppCompatActivity  {
     Button[] dateBtns = new Button[14];
     static int[] date={2018,11,11};
     private List<Activity> activities;
-    Activity activity1 = new Activity(1,"8:00","10:00","智能车大赛真好玩啊哈哈哈哈哈哈哈啊哈哈","科创","六教6A214","汽车系科协");
-    Activity activity2 = new Activity(2,"0:00","24:00","编程序真TM好玩啊哈水电费的说法呢发送到哈","计算机","没啥地点","拒绝熬夜组");
-    Activity activity3 = new Activity(3,"16:00","20:00","生命学院学生节欢迎大家一起来看很好看的","社工","大礼堂","生命学院学生会");
-    Activity activity4 = new Activity(4,"12:00","20:00","赶紧去学习吧哈哈哈哈哈哈哈哈哈哈哈哈","学习","#10 618","我");
+    Activity activity1 = new Activity(1,2018, 12, 20,"8:00","10:00","智能车大赛真好玩啊哈哈哈哈哈哈哈啊哈哈","科创","六教6A214","汽车系科协");
+    Activity activity2 = new Activity(2,2018, 12, 20,"0:00","24:00","编程序真TM好玩啊哈水电费的说法呢发送到哈","计算机","没啥地点","拒绝熬夜组");
+    Activity activity3 = new Activity(3,2018, 12, 20,"16:00","20:00","生命学院学生节欢迎大家一起来看很好看的","社工","大礼堂","生命学院学生会");
+    Activity activity4 = new Activity(4,2018, 12, 20,"12:00","20:00","赶紧去学习吧哈哈哈哈哈哈哈哈哈哈哈哈","学习","#10 618","我");
     private LinearLayout dateColumn;
     private LinearLayout publicActivity;
     int shuttle = 0;
