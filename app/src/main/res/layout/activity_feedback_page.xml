@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:text="功能建议"
                 android:textAlignment="center"
-                android:background="#b9b6b6"
+                android:background="#dcdcdc"
                 android:textColor="#484444"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -94,7 +94,7 @@
                 android:layout_marginLeft="8dp"
                 android:text="使用问题"
                 android:textAlignment="center"
-                android:background="#b9b6b6"
+                android:background="#dcdcdc"
                 android:textColor="#494747"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -106,7 +106,7 @@
                 android:layout_marginLeft="8dp"
                 android:text="内容相关"
                 android:textAlignment="center"
-                android:background="#b9b6b6"
+                android:background="#dcdcdc"
                 android:textColor="#484444"
                 android:textSize="14sp"
                 android:textStyle="bold" />
