@@ -125,4 +125,6 @@ public class FeedbackPage extends AppCompatActivity {
             return null;
         }
     }
+
+    public void goBack(View view){finish();}
 }
