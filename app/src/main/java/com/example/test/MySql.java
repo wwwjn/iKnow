@@ -31,6 +31,13 @@ public class MySql extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor Query(int year, int month, int day, int startHour){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TableName, null, "year="+String.valueOf(year)+" AND month="+String.valueOf(month)+" AND day="+String.valueOf(day)+
+                " AND startHour between "+String.valueOf(startHour)+" and "+String.valueOf(startHour+1),null, null ,null,"startHour");
+        return cursor;
+    }
+
     public void Insert(int Id, int year, int month, int day, int startHour, int startMinute, int endHour, int endMinute, String introduction,
                        String mainLabel, String subLabel, String activityLabel, String place, String host, String url, String name){
         SQLiteDatabase db = this.getWritableDatabase();
