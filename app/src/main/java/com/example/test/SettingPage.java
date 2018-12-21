@@ -23,27 +23,46 @@ public class SettingPage extends AppCompatActivity {
         privateBtn= (Button)findViewById(R.id.PrivateButton);
 
 
-        //佳妮的发布消息页面
-        /*
+        //发布消息页面
+
         publishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SettingActivity.this,CreatActivity.class);
+                Intent intent=new Intent(SettingPage.this,CreateActivity.class);
                 startActivity(intent);
             };
         });
-        */
 
-        //佳妮的用户设置页面
-        /*
+
+        //用户设置页面
+
         accountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2=new Intent(SettingActivity.this,AccountSetting.class);
+                Intent intent2=new Intent(SettingPage.this,AccountSetting.class);
                 startActivity(intent2);
             };
         });
-        */
+
+        //标签设置页面
+
+        labelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2=new Intent(SettingPage.this,SetLabelForUser.class);
+                startActivity(intent2);
+            };
+        });
+
+        //联系我们页面
+        contactBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SettingPage.this,ContactUs.class);
+                startActivity(intent);
+            };
+        });
+
 
         //点击“公共日历”按钮，跳转到"公共日历"页面
         publicBtn.setOnClickListener(new View.OnClickListener() {

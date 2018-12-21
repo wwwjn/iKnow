@@ -32,10 +32,12 @@ public class InitialPage extends AppCompatActivity {
     public void gotoPrivatePage() {
         Intent intent = new Intent(InitialPage.this, PrivatePage.class);
         startActivity(intent);
+        InitialPage.this.finish();
     }
 
     public void gotoLoginPage(){
         Intent intent = new Intent(InitialPage.this, LoginPage.class);
         startActivity(intent);
+        InitialPage.this.finish();
     }
 }

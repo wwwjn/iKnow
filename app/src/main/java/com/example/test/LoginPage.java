@@ -66,6 +66,7 @@ public class LoginPage extends AppCompatActivity {
                 }else{
                     Intent intent = new Intent(LoginPage.this, PrivatePage.class);
                     startActivity(intent);
+                    LoginPage.this.finish();
                 }
             }
         });
@@ -74,6 +75,7 @@ public class LoginPage extends AppCompatActivity {
             public void onClick(View v){
                 Intent intent = new Intent(LoginPage.this, RegisterPage.class);
                 startActivity(intent);
+                LoginPage.this.finish();
             }
         });
     }
