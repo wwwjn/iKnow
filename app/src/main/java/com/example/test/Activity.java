@@ -5,91 +5,74 @@ public class Activity {
     private int year;
     private int month;
     private int day;
-    private String startTime;
-    private String endTime;
+    private int startHour;
+    private int startMinute;
+    private int endHour;
+    private int endMinute;
     private String introduction;
-    private String classification;
+    private String mainLabel;
+    private String subLabel;
+    private String activityLabel;
     private String place;
     private String host;
+    private String url;
+    private String name;
 
-    public Activity(int activityId, int year, int month, int day, String startTime, String endTime, String introduction, String classification, String place, String host) {
+    public Activity(int activityId, int year, int month, int day, int startHour, int startMinute, int endHour, int endMinute,
+                    String introduction, String mainLabel, String subLabel, String activityLabel, String place, String host, String url, String name) {
         this.activityId = activityId;
         this.year = year;
         this.month = month;
         this.day = day;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.startHour = startHour;
+        this.startMinute = startMinute;
+        this.endHour = endHour;
+        this.endMinute = endMinute;
         this.introduction = introduction;
-        this.classification = classification;
+        this.mainLabel = mainLabel;
+        this.subLabel = subLabel;
+        this.activityLabel = activityLabel;
         this.place = place;
         this.host = host;
+        this.url = url;
+        this.name = name;
     }
 
-    public int getActivityId() {
-        return activityId;
-    }
-
-    public void setActivityId(int activityId) {
-        this.activityId = activityId;
-    }
+    public int getActivityId() {return activityId;}
 
     public int getYear(){return year;}
 
-    public void setYear(int year){this.year = year;}
-
     public int getMonth(){return month;}
-
-    public void setMonth(int month){this.month = month;}
 
     public int getDay(){return day;}
 
-    public void setDay(int year){this.day = day;}
+    public int getStartHour(){return startHour;}
 
-    public String getStartTime() {
-        return startTime;
-    }
+    public int getStartMinute(){return startMinute;}
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
+    public int getEndHour(){return endHour;}
 
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
+    public int getEndMinute(){return endMinute;}
 
     public String getIntroduction() {
         return introduction;
     }
 
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
-    }
+    public String getMainLabel(){return mainLabel;}
 
-    public String getClassification() {
-        return classification;
-    }
+    public String getSubLabel(){return subLabel;}
 
-    public void setClassification(String classification) {
-        this.classification = classification;
-    }
+    public String getActicityLabel(){return activityLabel;}
 
     public String getPlace() {
         return place;
-    }
-
-    public void setPlace(String place) {
-        this.place = place;
     }
 
     public String getHost() {
         return host;
     }
 
-    public void setHost(String host) {
-        this.host = host;
-    }
+    public String getUrl(){return url;}
+
+    public String getName(){return name;}
 }

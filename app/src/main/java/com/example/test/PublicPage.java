@@ -15,7 +15,7 @@ import java.util.List;
 
 public class PublicPage extends AppCompatActivity  {
 
-    Button browser;
+    /*Button browser;
     Button[] dateBtns = new Button[14];
     static int[] date={2018,11,11};
     private List<Activity> activities;
@@ -149,7 +149,7 @@ public class PublicPage extends AppCompatActivity  {
     public void gotoPrivatePage(View view) {
         Intent intent = new Intent(this, PrivatePage.class);
         startActivity(intent);
-    }
+    }*/
 
 }
 
