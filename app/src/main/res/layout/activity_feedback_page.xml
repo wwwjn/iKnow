@@ -173,13 +173,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
             android:layout_marginTop="10dp"
-            android:text="提交成功！"
-            android:visibility="invisible"
+            android:layout_marginRight="3dp"
+            android:text="提交成功"
+            android:textAlignment="center"
             android:textColor="#bf2727"
             android:textSize="22sp"
-            android:textAlignment="center" />
+            android:visibility="invisible" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

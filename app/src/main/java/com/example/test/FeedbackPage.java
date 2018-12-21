@@ -25,6 +25,7 @@ public class FeedbackPage extends AppCompatActivity {
     private Button Submit;
     private String[] TagContent = {"功能建议", "使用问题", "内容相关"};
     private TextView SubmitSucceed;
+    private boolean feedbackFlag=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class FeedbackPage extends AppCompatActivity {
         }
 
         FeedBack = findViewById(R.id.FeedBack);
+        SubmitSucceed = findViewById(R.id.SubmitSucceed);
 
         Submit = findViewById(R.id.ButtonSubmit);
         Submit.setOnClickListener(new View.OnClickListener(){
@@ -67,11 +69,14 @@ public class FeedbackPage extends AppCompatActivity {
                 }catch(Exception e){
                     e.printStackTrace();
                 }
-                SubmitSucceed.setVisibility(View.VISIBLE);
+                if(feedbackFlag){
+                    SubmitSucceed.setVisibility(View.VISIBLE);
+                }
+
             }
         });
 
-        SubmitSucceed = findViewById(R.id.SubmitSucceed);
+
     }
 
     private class Submit extends Thread{
@@ -113,6 +118,12 @@ public class FeedbackPage extends AppCompatActivity {
                 if (connection.getResponseCode() == 200) {
                     String result = StreamToString(connection.getInputStream());
                     Log.i("Connection", result);
+                    if(result.equals("Succeeded")){
+                        feedbackFlag = true;
+                    }
+                    else{
+                        feedbackFlag = false;
+                    }
                 }
                 else{
                     Log.i("Connection", "Fail");
