@@ -34,8 +34,7 @@ public class FeedbackPage extends AppCompatActivity {
         Back = findViewById(R.id.ButtonBack);
         Back.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent(FeedbackPage.this, PrivatePage.class);  //之后更改--------
-                startActivity(intent);
+                FeedbackPage.this.finish();
             }
         });
 
