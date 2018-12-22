@@ -31,6 +31,12 @@ public class MySql extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor Query(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TableName, null, "Id="+String.valueOf(id),null, null ,null,null);
+        return cursor;
+    }
+
     public Cursor Query(int year, int month, int day, int startHour){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TableName, null, "year="+String.valueOf(year)+" AND month="+String.valueOf(month)+" AND day="+String.valueOf(day)+
