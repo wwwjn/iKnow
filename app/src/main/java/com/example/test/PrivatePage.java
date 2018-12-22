@@ -17,6 +17,7 @@ public class PrivatePage extends AppCompatActivity {
     private int CurrentYear, CurrentMonth, CurrentDate;
     private MySql mysql;
     private Cursor cursor;
+    private int ShowNum = 0;
 
     private void Init(){
         LinearLayout layout = findViewById(R.id.DateViewLayout);
@@ -51,25 +52,44 @@ public class PrivatePage extends AppCompatActivity {
 
     private void ShowActivity(){
         mysql = new MySql(this);
-        for(int i = 0; i < 9; i++){
-            cursor = mysql.Query(CurrentYear, CurrentMonth+1, CurrentDate + CurrentDateId,2*i+6);
-            if(cursor.getCount() > 0){
-                LinearLayout layout = findViewById(R.id.TimeView06 + i);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-                Button ActivityButton = new Button(this);
-                cursor.moveToFirst();
-                ActivityButton.setText(cursor.getString(cursor.getColumnIndex("name"))+"\n时间:"+
-                        cursor.getString(cursor.getColumnIndex("startHour"))+":"+cursor.getString(cursor.getColumnIndex("startMinute"))
-                +"-"+cursor.getString(cursor.getColumnIndex("endHour"))+":"+cursor.getString(cursor.getColumnIndex("endMinute"))+
-                "    地点:"+cursor.getString(cursor.getColumnIndex("place")));
-                ActivityButton.setTextSize(12);
-                ActivityButton.setBackgroundResource(R.drawable.button_register);
-                ActivityButton.setLayoutParams(params);
-                layout.addView(ActivityButton);
-            }
-            //while(cursor.moveToNext())
-                //Log.i("Connection", String.valueOf(i) + cursor.getString(cursor.getColumnIndex("host")));
+        for(int i = 20181225; i < 20181225+ShowNum; i++){
+            View v = findViewById(i);
+            ViewGroup vg = (ViewGroup) v.getParent();
+            vg.removeView(v);
         }
+        ShowNum = 0;
+        for(int i = 0; i < 9; i++){
+            cursor = mysql.Query(CurrentYear, CurrentMonth%12+1, (CurrentDate + CurrentDateId - 1)%31+1,2*i+6);
+            int num = cursor.getCount();
+            for(int j = 0; j < num; j++){
+                cursor.moveToNext();
+                addActivityButton(num,cursor,i,j);
+            }
+        }
+    }
+
+    private void addActivityButton(int n, Cursor ActivityCursor, int i, int j){
+        final int ThisId = ActivityCursor.getInt(ActivityCursor.getColumnIndex("Id"));
+        LinearLayout layout = findViewById(R.id.TimeView06 + i);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getPixelsFromDp(200/n), LinearLayout.LayoutParams.MATCH_PARENT);
+        Button ActivityButton = new Button(this);
+        ActivityButton.setId(20181225+ShowNum);
+        ActivityButton.setText(ActivityCursor.getString(ActivityCursor.getColumnIndex("name")) + "\n时间:" +
+                ActivityCursor.getString(ActivityCursor.getColumnIndex("startHour")) + ":" + ActivityCursor.getString(ActivityCursor.getColumnIndex("startMinute"))
+                + "-" + ActivityCursor.getString(ActivityCursor.getColumnIndex("endHour")) + ":" + ActivityCursor.getString(ActivityCursor.getColumnIndex("endMinute")) +
+                "    地点:" + ActivityCursor.getString(ActivityCursor.getColumnIndex("place")));
+        ActivityButton.setTextSize(14-2*n);
+        ActivityButton.setBackgroundResource(R.drawable.button_myactivity1 + j%2);
+        ActivityButton.setLayoutParams(params);
+        ActivityButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(PrivatePage.this, DetailPage.class);
+                intent.putExtra("ActivityId", ThisId);
+                startActivity(intent);
+            }
+        });
+        layout.addView(ActivityButton);
+        ShowNum += 1;
     }
 
     private int getPixelsFromDp(int size){
@@ -85,9 +105,18 @@ public class PrivatePage extends AppCompatActivity {
         Init();
 
         /*mysql = new MySql(this);
-        cursor = mysql.Query();
-        while(cursor.moveToNext())
-            Log.i("Connection", cursor.getString(cursor.getColumnIndex("place") ));*/
+        mysql.Insert(1,2018,12,25,8,15,9,45,"这是活动1","主标签",
+                "副标签","活动标签","清华大学","拒绝熬夜组",null,"圣诞聚餐1");
+        mysql.Insert(2,2018,12,25,9,15,9,45,"这是活动2","主标签",
+                "副标签","活动标签","清华大学","拒绝熬夜组",null,"圣诞聚餐2");
+        mysql.Insert(3,2018,12,25,9,15,16,45,"这是活动3","主标签",
+                "副标签","活动标签","清华大学","拒绝熬夜组",null,"圣诞聚餐3");
+        mysql.Insert(4,2018,12,26,9,15,16,45,"这是活动3","主标签",
+                "副标签","活动标签","清华大学","拒绝熬夜组",null,"圣诞聚餐4");
+        mysql.Insert(5,2018,12,26,9,15,16,45,"这是活动3","主标签",
+                "副标签","活动标签","清华大学","拒绝熬夜组",null,"圣诞聚餐5");
+        mysql.Insert(6,2018,12,27,9,15,16,45,"这是活动3","主标签",
+                "副标签","活动标签","清华大学","拒绝熬夜组",null,"圣诞聚餐6");*/
     }
 
     //点击"公共日历"按钮，进入“公共日历”页面
