@@ -109,9 +109,10 @@ public class PrivatePage extends AppCompatActivity {
         setContentView(R.layout.activity_private_page);
         Init();
 
-        /*MySql mysql = new MySql(this);
+        /*mysql = new MySql(this);
         mysql.Insert(1,2018,12,25,8,15,9,45,"这是活动1","主标签",
                 "副标签","活动标签","清华大学","拒绝熬夜组",null,"圣诞聚餐1");
+        mysql.Delete(1);
         mysql.Insert(2,2018,12,25,9,15,9,45,"这是活动2","主标签",
                 "副标签","活动标签","清华大学","拒绝熬夜组",null,"圣诞聚餐2");
         mysql.Insert(3,2018,12,25,9,15,16,45,"这是活动3","主标签",
