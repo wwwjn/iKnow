@@ -576,7 +576,7 @@ public class SearchPage extends AppCompatActivity {
     Button.OnClickListener switchButtonListener = new Button.OnClickListener() {
         public void onClick(View v) {
             if(v.getId()==R.id.private_btn) {
-                Intent intent = new Intent(SearchPage.this, PublicPage.class);
+                Intent intent = new Intent(SearchPage.this, PrivatePage.class);
                 startActivity(intent);
                 SearchPage.this.finish();
                 //现在是跳转到public，之后合并再说
@@ -587,7 +587,7 @@ public class SearchPage extends AppCompatActivity {
                 SearchPage.this.finish();
             }
             else if(v.getId()==R.id.setting_btn){
-                Intent intent = new Intent(SearchPage.this, PublicPage.class);
+                Intent intent = new Intent(SearchPage.this, SettingPage.class);
                 startActivity(intent);
                 SearchPage.this.finish();
                 //现在是跳转到public，之后合并再说

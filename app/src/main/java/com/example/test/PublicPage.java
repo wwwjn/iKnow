@@ -23,7 +23,7 @@ import java.util.List;
 
 
 public class PublicPage extends AppCompatActivity  {
-    Button browser;
+    Button browser, private_btn, setting_btn;
     Button[] dateBtns = new Button[14];
     int[] date = new int[3];
     String username;
@@ -56,6 +56,10 @@ public class PublicPage extends AppCompatActivity  {
         setContentView(R.layout.activity_public_page);
         browser = findViewById(R.id.BrowserButton);
         browser.setOnClickListener(pageChangeListener);
+        private_btn = findViewById(R.id.PrivateButton);
+        setting_btn = findViewById(R.id.SettingButton);
+        private_btn.setOnClickListener(switchButtonListener);
+        setting_btn.setOnClickListener(switchButtonListener);
         dateColumn = findViewById(R.id.dateColumn);
         setSystemDate();
         initDateColumn(0);
@@ -398,6 +402,22 @@ public class PublicPage extends AppCompatActivity  {
             intent.putExtra("ActivityNum",no);
             startActivityForResult(intent,REQUESTCODE);
             PublicPage.this.finish();
+        }
+    };
+    Button.OnClickListener switchButtonListener = new Button.OnClickListener() {
+        public void onClick(View v) {
+            if(v.getId()==R.id.PrivateButton) {
+                Intent intent = new Intent(PublicPage.this, PrivatePage.class);
+                startActivity(intent);
+                PublicPage.this.finish();
+                //现在是跳转到public，之后合并再说
+            }
+            else if(v.getId()==R.id.SettingButton){
+                Intent intent = new Intent(PublicPage.this, SettingPage.class);
+                startActivity(intent);
+                PublicPage.this.finish();
+                //现在是跳转到public，之后合并再说
+            }
         }
     };
 }
