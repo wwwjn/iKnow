@@ -104,7 +104,7 @@ public class DetailPage extends AppCompatActivity {
                 Json.put("ActivityId", String.valueOf(Id));
                 String content = String.valueOf(Json);
 
-                URL url = new URL("https://iknow.gycis.me:8443?????????????????");
+                URL url = new URL("https://iknow.gycis.me:8443");//修改成删除User的个人活动的URL地址-----------
                 HttpURLConnection connection =  (HttpURLConnection)url.openConnection();
                 connection.setRequestMethod("POST");
                 connection.setConnectTimeout(5000);
